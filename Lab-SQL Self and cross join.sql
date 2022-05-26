@@ -98,7 +98,8 @@ join (
 	order by customer_id, film_id
     )sub2
 	on sub1.film_id = sub2.film_id and sub1.customer_id <> sub2.customer_id;
-    -- or if we would like to have the pair only in one direction order as we will have half number of results, for instance we get the 
+    
+    -- or if we would like to have the pair only in one direction order, we will have half number of results, for instance we get the 
     -- pair of customer_ids 6-275 but we don't get the pair of customer_ids 275-6
     select sub1.customer_id, sub1.first_name, sub1.last_name, sub2.customer_id, sub2.first_name, sub2.last_name,  sub1.film_id, sub1.number_of_being_rented from (
 	select customer_id, first_name, last_name, film_id, count(rental_id) as number_of_being_rented from sakila.rental
